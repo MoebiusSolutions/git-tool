@@ -7,7 +7,7 @@ Usage
 --------------------
 
 ```
-  java git-tool.jar [fix-urls [--simulate] <base-directory>]
+  java -jar git-tool.jar [fix-urls [--simulate] <base-directory>]
 
   fix-urls
     Upates the remote urls of moesol repos from the old format to the new (Dec 2015).
