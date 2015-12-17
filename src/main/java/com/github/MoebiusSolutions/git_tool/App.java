@@ -89,7 +89,7 @@ public class App {
 	private static void printUsageAndTerminate() {
 		System.out.printf("%n");
 		System.out.printf("Usage: %n");
-		System.out.printf("  java git-tool.jar [fix-urls [--simulate] <base-directory>]%n", App.class.getName());
+		System.out.printf("  java -jar git-tool.jar [fix-urls [--simulate] <base-directory>]%n", App.class.getName());
 		System.out.printf("%n");
 		System.out.printf("  fix-urls%n");
 		System.out.printf("    Upates the remote urls of moesol repos from the old format to the new (Dec 2015).%n");
