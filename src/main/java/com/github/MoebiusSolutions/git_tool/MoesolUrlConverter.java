@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class MoesolUrlConverter {
 
 	private static Pattern[] oldUrlPatterns = {
-		Pattern.compile("ssh://([\\w\\.]+@)?git.moesol.com/git/([^\t]+)")
+        Pattern.compile("ssh://([\\w\\.]+@)?git.moesol.com:?/git/([^\t]+)")
 	};
 
 	/**
