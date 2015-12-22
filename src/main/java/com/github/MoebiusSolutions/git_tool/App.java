@@ -71,8 +71,12 @@ public class App {
     					new GitRemoteTranslator(
     							new GitRemoteUpdater(System.out).setSimulate(doSimulate)));
     	for (Path repoDir : gitDirs) {
-        	String tty = ProcessLauncher.I.launchAndWait(repoDir, "git", "remote", "-v");
-        	processor.handle(new GitRemoteTty(repoDir, tty));
+    	    try {
+            	String tty = ProcessLauncher.I.launchAndWait(repoDir, "git", "remote", "-v");
+            	processor.handle(new GitRemoteTty(repoDir, tty));
+    	    } catch (Exception e) {
+    	        throw new RuntimeException(String.format("Failed process directory [%s]", repoDir), e);
+    	    }
     	}
     }
 

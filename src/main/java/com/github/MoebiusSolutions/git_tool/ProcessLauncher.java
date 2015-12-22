@@ -8,6 +8,8 @@ import java.nio.file.Path;
 
 import org.apache.commons.exec.PumpStreamHandler;
 
+import com.google.common.base.Joiner;
+
 public class ProcessLauncher {
 
 	/**
@@ -43,12 +45,17 @@ public class ProcessLauncher {
 	        // Kill threads and flush
 	        streamPumper.stop();
 	        
-    	} catch (IOException | InterruptedException e) {
-    		throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(String.format("Command Interrupted: %s", cmdToString(cmd)), e);
+        } catch (Exception e) {
+            throw new RuntimeException(String.format("Command Failed: %s", cmdToString(cmd)), e);
 		} finally {
 			CloseablesExt.closeQuietly(outputStream);
     	}
         return new String(outputStream.toByteArray());
     }
 
+    private static String cmdToString(String... cmd) {
+        return "\"" + Joiner.on("\" \"").join(cmd) + "\"";
+    }
 }
