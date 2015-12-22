@@ -40,6 +40,9 @@ public class ProcessLauncher {
 	        	throw new IOException(String.format("Process terminated with exit [%s]", exitValue));
 	        }
 	        
+	        // Kill threads and flush
+	        streamPumper.stop();
+	        
     	} catch (IOException | InterruptedException e) {
     		throw new RuntimeException(e);
 		} finally {
